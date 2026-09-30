@@ -1,0 +1,37 @@
+{
+  "ticket_id": null,
+  "ticket_author": "Juras",
+  "ticket_created_at": "2026-09-30T12:43:00Z",
+  "ticket_text": "ppadevs/ddd: replace removed EntityManager::transactional() with wrapInTransaction for Doctrine ORM 3",
+  "ticket_approved_by": null,
+  "ticket_approved_at": null,
+  "spec_type": "hotfix",
+  "spec_name": "hotfix-orm3ApiCompat",
+  "branch": "hotfix-orm3ApiCompat",
+  "repo": "C:\\WWW\\ppadevs\\ddd",
+  "companion_specs": [
+    "C:\\WWW\\ppadevs\\paginator\\DOCS\\hotfix\\orm3ApiCompat\\",
+    "C:\\WWW\\ppadevs\\ddd\\DOCS\\hotfix\\doctrineOrmBump\\"
+  ],
+  "created_at": "2026-09-30T12:43:00Z",
+  "updated_at": "2026-09-30T13:12:42Z",
+  "language": "en",
+  "phase": "discovered",
+  "summary": "Doctrine ORM 3 removed EntityManager::transactional(); ppadevs/ddd's DoctrineSession::executeAtomically() still calls it and would fatal on the first transaction under ORM 3. Prefer wrapInTransaction (ORM 3) with a transactional fallback (ORM 2); ship on the same v26.41.x release train as the doctrineOrmBump hotfix.",
+  "authors": [
+    "Juras"
+  ],
+  "files_changed": [
+    "src/ppadevs/Ddd/Infrastructure/Application/Service/DoctrineSession.php"
+  ],
+  "testing_packages": {
+    "nimdev/ddd": "v26.41.1 published 2026-09-30 (constraint relaxed; DoctrineSession fix still missing)"
+  },
+  "tags_planned": {
+    "ppadevs/ddd": "v26.41.x (one production tag carrying constraint bump + this fix; owner decides the final number)"
+  },
+  "task_details": {
+    "include_testing": false
+  },
+  "ready_for_implementation": true
+}
