@@ -26,6 +26,10 @@ class DoctrineSession implements TransactionalSession
      */
     public function executeAtomically(callable $operation)
     {
+        if (method_exists($this->entityManager, 'wrapInTransaction')) {
+            return $this->entityManager->wrapInTransaction($operation);
+        }
+
         return $this->entityManager->transactional($operation);
     }
 }
